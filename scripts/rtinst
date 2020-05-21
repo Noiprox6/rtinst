@@ -819,7 +819,7 @@ else
   sed -i "/^\(\s\|#\)*server_name/ c\        server_name $serverip;" /etc/nginx/sites-available/default
 fi
 
-service nginx restart && service $phpver-fpm restart
+service nginx restart #&& service $phpver-fpm restart
 
 if [ $dlflag = 0 ]; then
   rtdload enable
