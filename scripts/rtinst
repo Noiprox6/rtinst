@@ -574,9 +574,9 @@ if ! [ $? = 0 ]; then
   echo "Problem installing packages. Check log and rerun once it is resolved" && exit
 fi
 
-if [[ $phpver =~ php7.[0-9] ]]; then
-  apt-get -qq install $phpver-mbstring >> $logfile 2>&1
-fi
+#if [[ $phpver =~ php7.[0-9] ]]; then
+#  apt-get -qq install $phpver-mbstring >> $logfile 2>&1
+#fi
 
 #install unrar package
 if [ $osname = "Debian" ] && ! installed unrar; then
@@ -796,11 +796,11 @@ cp -f /etc/rtinst/conf/nginxsitedl /etc/nginx/sites-available/dload-loc
 echo "location ~ \.php$ {" > /etc/nginx/conf.d/php
 echo "          fastcgi_split_path_info ^(.+\.php)(/.+)$;" >> /etc/nginx/conf.d/php
 
-if [ "$phpver" = "php5" ]; then
-  echo "          fastcgi_pass unix:/var/run/php5-fpm.sock;" >> /etc/nginx/conf.d/php
-else
-  echo "          fastcgi_pass unix:/var/run/php/$phpver-fpm.sock;" >> /etc/nginx/conf.d/php
-fi
+#if [ "$phpver" = "php5" ]; then
+#  echo "          fastcgi_pass unix:/var/run/php5-fpm.sock;" >> /etc/nginx/conf.d/php
+#else
+#  echo "          fastcgi_pass unix:/var/run/php/$phpver-fpm.sock;" >> /etc/nginx/conf.d/php
+#fi
 
 echo "          fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;" >> /etc/nginx/conf.d/php
 echo "          fastcgi_index index.php;" >> /etc/nginx/conf.d/php
